@@ -1,0 +1,20 @@
+# dependencies
+server/node_modules
+client/node_modules
+/node_modules
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+
+/uploads
+
+.vscode
+*.csv
+*.pdf
+sonar-project.properties
+yarn.lock
+*-lock.json

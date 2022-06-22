@@ -1,8 +1,8 @@
 import type { Treatment } from '../../../../../shared/types';
 import { axiosInstance } from '../../../axiosInstance';
 import { queryKeys } from '../../../react-query/constants';
-import { useCustomToast } from '../../app/hooks/useCustomToast';
 import { useQuery } from 'react-query';
+import { useCustomToast } from '../../app/hooks/useCustomToast';
 
 // for when we need a query function for useQuery
 async function getTreatments(): Promise<Treatment[]> {
@@ -11,8 +11,18 @@ async function getTreatments(): Promise<Treatment[]> {
 }
 
 export function useTreatments(): Treatment[] {
+	const toast = useCustomToast();
+
 	const fallback = [];
-	const { data = fallback } = useQuery(queryKeys.treatments, getTreatments);
+	const { data = fallback } = useQuery(queryKeys.treatments, getTreatments, {
+		onError: (error) => {
+			const title =
+				error instanceof Error
+					? error.toString().replace(/^Error:\s*/, '')
+					: 'error connecting to server';
+			toast({ title, status: 'error' });
+		},
+	});
 	console.log('data', data);
 	return data;
 }

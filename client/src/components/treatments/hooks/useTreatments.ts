@@ -6,7 +6,7 @@ import { useCustomToast } from '../../app/hooks/useCustomToast';
 
 // for when we need a query function for useQuery
 async function getTreatments(): Promise<Treatment[]> {
-	const { data } = await axiosInstance.get('/treatmentsa');
+	const { data } = await axiosInstance.get('/treatments');
 	return data;
 }
 

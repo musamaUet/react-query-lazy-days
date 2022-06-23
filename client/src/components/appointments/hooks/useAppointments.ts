@@ -101,6 +101,9 @@ export function useAppointments(): UseAppointments {
 		() => getAppointments(monthYear.year, monthYear.month),
 		{
 			select: showAll ? undefined : selectFn,
+			cacheTime: 30000,
+			refetchOnMount: false,
+			refetchOnReconnect: false,
 		}
 	);
 	// const appointments = {};

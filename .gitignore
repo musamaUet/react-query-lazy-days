@@ -8,7 +8,6 @@ client/node_modules
 
 # misc
 .DS_Store
-.env
 
 /uploads
 
@@ -18,3 +17,4 @@ client/node_modules
 sonar-project.properties
 yarn.lock
 *-lock.json
+config.bat
